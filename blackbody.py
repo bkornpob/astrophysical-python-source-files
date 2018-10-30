@@ -14,3 +14,12 @@ def bb_lambda_mag(wavelength, temperature, shift=0.):
   f = bb_lambda(wavelength, temperature)
   return -2.5 * np.log10(f) - 5. * np.log10(wavelength) + shift
 
+def get_bb_mag(w, t, s):
+    """return numpy.array of magnitude
+    w = numpy.array of wavelength
+    t = a temperature
+    s = a shift"""
+    y = []
+    for j in w:
+        y.append(bb_lambda_mag(j, t, s)[0,0])
+    return np.array(y)
